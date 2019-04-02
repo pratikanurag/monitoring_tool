@@ -24,51 +24,44 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-4 is-4">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-4 is-4">
-                    <div class="box">
-                        <article class="media">
-                            <div class="media-left">
-                                <figure class="image is-50x50">
-                                    <!-- <img src="http://openweathermap.org/img/w/10d.png" alt="Image"> -->
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    {% for tps in tpte %}
-                                    <p>
-                                        <span class="title">ID:- {{ tps.id }}</span>
-                                        <br>
-                                        <span class="subtitle">Tenant name:- {{ tps.tenant_name }}</span>
-                                        <br>
-                                        <span class="subtitle">Status:- {{ tps.status }}</span>
-                                        <br>
-                                        <span class="subtitle">Last Updated:- {{ tps.last_update_date }}</span>
-                                        <br>
-                                        <span class="subtitle">Dealer ID:- {{ tps.dealer_id }}</span>
-                                        <br>
-                                        <span class="subtitle">Resource Type:- {{ tps.resource_type }}</span>
-                                        <br>
-                                        <span class="subtitle">Created At:- {{tps.create_date}}</span>
-                                        <br> <hr>
-                                    </p>
-                                    {% endfor %}
+                <div class="column is-offset-0 is-12">
+                        {% for tps in tpte %}
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image is-50x50">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-128.png" alt="failed">
+                                    </figure>
                                 </div>
-                            </div>
-                        </article>
+                                <div class="media-content">
+                                    <div class="content">
+                                            <p>
+                                                    <span class="title">ID:- {{ tps.id }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Tenant name:- {{ tps.tenant_name }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Status:- {{ tps.status }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Last Updated:- {{ tps.last_update_date }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Dealer ID:- {{ tps.dealer_id }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Resource Type:- {{ tps.resource_type }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Created At:- {{tps.create_date}}</span>
+                                                    <br> <hr>
+                                                </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
                     </div>
-                </div>
             </div>
         </div>
     </section>
-    <footer class="footer">
+    
+    <footer class="footer"> Click on the individual card link to view error screenshot.
     </footer>
 </body>
 </html>
