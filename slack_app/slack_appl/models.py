@@ -19,3 +19,6 @@ class ThirdPartyTransferError(models.Model):
     class Meta:
         managed = False
         db_table = 'third_party_transfer_error'
+    def __str__(self):
+        return self.tenant_name 
+    
