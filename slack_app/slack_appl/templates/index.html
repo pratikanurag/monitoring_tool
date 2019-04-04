@@ -1,67 +1,63 @@
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Monitoring Tool</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RO Failure Alert</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
 </head>
-<body>
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                    <figure class="image is-50x50">
-                            <!-- <img src="templates/tekion.jpg" alt="Image"> -->
-                        </figure>
-                <h1 class="title">
-                   Monitoring Tool 
-                </h1>
-            </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-0 is-12">
-                        {% for tps in tpte %}
-                        <div class="box">
-                            <article class="media">
-                                <div class="media-left">
-                                    <figure class="image is-50x50">
-                                        <img src="https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-128.png" alt="failed">
-                                    </figure>
+<section class="hero is-primary">
+  <div class="hero-body">
+      <div class="container">
+              <figure class="image is-50x50">
+                  
+                  </figure>
+          <h1 class="title">
+                  RO Failure Alert 
+          </h1>
+      </div>
+  </div>
+</section>
+
+<section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1"></h5>
+        <div class="row">
+            
+            {% for tps in tpte %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class="img-fluid" src= {{tps.log_file_path}} width = "300" height = "300"></p>
+                                    <h4 class="card-title">Tenant name:- {{ tps.tenant_name }}</h4>
+                                    <p class="card-text">Status:- {{ tps.status }}</p>
+                                    <a href={{tps.log_file_path}} class="btn btn-primary btn-sm">Open Image<i class="fa fa-plus"></i></a>
                                 </div>
-                                <div class="media-content">
-                                    <div class="content">
-                                            <p>
-                                                    <span class="title">ID:- {{ tps.id }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Tenant name:- {{ tps.tenant_name }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Status:- {{ tps.status }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Last Updated:- {{ tps.last_update_date }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Dealer ID:- {{ tps.dealer_id }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Resource Type:- {{ tps.resource_type }}</span>
-                                                    <br>
-                                                    <span class="subtitle">Created At:- {{tps.create_date}}</span>
-                                                    <br> <hr>
-                                                </p>
-                                    </div>
-                                </div>
-                            </article>
+                            </div>
                         </div>
-                        {% endfor %}
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <p class="card-text">Last Updated:- {{ tps.last_update_date }}</p>
+                                    <p class="card-text">Machine ID:- {{ tps.machine_id }}</p>
+                                    <p class="card-text">Created At:- {{tps.create_date}}</p>
+                                    <p class="card-text">Service Advisor ID:- {{ tps.service_advisor_id }}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
             </div>
+            
+            {% endfor %}
+
         </div>
-    </section>
-    
-    <footer class="footer"> Click on the individual card link to view error screenshot.
-    </footer>
-</body>
-</html>
+    </div>
+</section>
