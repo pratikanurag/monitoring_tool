@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RO Failure Alert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                    <figure class="image is-50x50">
+                            <!-- <img src="https://media.licdn.com/dms/image/C560BAQGB0W6_ixPclA/company-logo_200_200/0?e=2159024400&v=beta&t=tmIcrEZ6nX9D55kdqZpUgHOZrYITijMVAAR12IPpPx8" alt="Image" height = "50" weight = "50"> -->
+                        </figure>
+                <h1 class="title">
+                        RO Failure Alert 
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-0 is-12">
+                        {% for tps in tpte %}
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image is-50x50">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-128.png" alt="failed">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <div class="content">
+                                            <p>
+                                                    <span class="subtitle">ID:- {{ tps.id }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Tenant name:- {{ tps.tenant_name }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Status:- {{ tps.status }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Last Updated:- {{ tps.last_update_date }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Service Advisor ID:- {{ tps.service_advisor_id }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Machine ID:- {{ tps.machine_id }}</span>
+                                                    <br>
+                                                    <span class="subtitle">Created At:- {{tps.create_date}}</span>
+                                                    <br>
+                                                    <span class="subtitle">Screenshot:-<br>
+                                                    <img src="https://files.slack.com/files-pri/T1JDD1QH4-FHGTJ5WFJ/c__users_tekionsupport_ro_snapshots_gillautogroup_1_26825-4-1-20190402-0015.png" width = "265" height = "265">
+                                                    </span><br> <hr>
+                                                </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer"> Click on the individual card link to view error screenshot.
+    </footer>
+</body>
+</html>
