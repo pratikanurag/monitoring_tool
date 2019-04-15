@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RO Failure Alert</title>
-    
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -18,7 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
 </head>
 <!------ Include the above in your HEAD tag ---------->
-
+<form action="" method="post">
+        {% csrf_token %}
 <div class="container">
         <img src = "https://uxreactor.com/assets/tekion_logo.png" width = "300" height = "300" alt = "tekion">
     
@@ -28,12 +28,14 @@
             <div class="panel-heading" style="background-color:lightseagreen">
                 <h3 class="panel-title">Ro Failures List</h3>
                 <div class="pull-right">
+                        <button class="btn btn-default btn-xs" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();">Delete Tasks</button>
                     <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
                 </div>
             </div>
             <table class="table">
                 <thead>
                     <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="#Mark" disabled></th>
                         <th><input type="text" class="form-control" placeholder="#ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Tenant name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Status" disabled></th>
@@ -41,11 +43,15 @@
                         <th><input type="text" class="form-control" placeholder="Machine ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Service Advisor ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Created At" disabled></th>
+                        <!-- <th><input type="text" class="form-control" placeholder="Work Status" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Support Person" disabled></th> -->
                     </tr>
                 </thead>
                 <tbody>
                         {% for tps in tpte %}
+                        
                     <tr>
+                        <td><input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ tps.id }}" value="{{ tps.id }}"></td>
                         <td>{{ tps.id }}</td>
                         <td>{{ tps.tenant_name }}</td>
                         <td>{{ tps.status }}</td>
@@ -53,10 +59,24 @@
                         <td>{{ tps.machine_id }}</td>
                         <td>{{ tps.service_advisor_id }}</td>
                         <td>{{tps.create_date}}</td>
+                        <!-- <td><select id="status" class="taskStatus" name="status_select" required>
+                            <option hidden disabled selected value>select a status</option>
+                            <option class="" value="Inprogress" name="Inprogress">Inprogress</option>
+                            <option class="" value="Pending" name="Pending">Pending</option>
+                            <option class="" value="Completed" name="Completed">Completed</option>
+                        </select></td>
+                        <td><select id="support_person" class="supportPerson" name="Person_select" required>
+                            <option hidden disabled selected value>select support person</option>
+                            <option class="" value="Jit" name="Jit">Jit</option>
+                            <option class="" value="Sriram" name="Sriram">Sriram</option>
+                            <option class="" value="Deepak" name="Deepak">Deepak</option>
+                        </select></td> -->
                     </tr>
+                    
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+</form>
